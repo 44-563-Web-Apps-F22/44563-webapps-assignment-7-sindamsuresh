@@ -32,12 +32,11 @@
 
 <body>
 	<h1>Suresh Sindam builds a cycler</h1>
-	
 
 	<div class="flex-container" id="target">
-		<div class="cycler">row item 1</div>   
-		<div class="cycler">row item 2</div>  
-		<div class="cycler">row item 3</div>  
+		<div class="cycler">row item 1</div>
+		<div class="cycler">row item 2</div>
+		<div class="cycler">row item 3</div>
 	</div>
 
 
@@ -47,7 +46,8 @@
 
 	<button onclick="makeNewDiv()">Add value</button>
 
-
+	<button onclick="get()">Get</button>
+	<button onclick="spin()">Spin</button>
 </body>
 <script>
 	function makeNewDiv() {
@@ -57,10 +57,30 @@
 
 		element.innerHTML = value
 		element.className = "cycler"
-		
+
 		/* add it to the container */
 		let container = document.getElementById('target')
 		container.appendChild(element)
 	}
+
+	function get() {
+		var cyclerItems = document.getElementsByClassName("cycler")
+		if (cyclerItems.length > 0) {
+			cyclerItems[cyclerItems.length - 1].remove()
+		}
+	}
+
+	function spin() {
+		console.log("entered into spin")
+		var cyclerItems = document.getElementsByClassName("cycler")
+		if (cyclerItems.length > 1) {
+			console.log("working")
+			removedItem = cyclerItems[cyclerItems.length - 1]
+			cyclerItems[cyclerItems.length - 1].remove()
+			let container = document.getElementById("target")
+			container.insertBefore(removedItem, container.firstChild)
+		}
+	}
 </script>
+
 </html>
