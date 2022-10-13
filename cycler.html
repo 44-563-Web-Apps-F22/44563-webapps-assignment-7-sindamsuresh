@@ -48,39 +48,39 @@
 
 	<button onclick="get()">Get</button>
 	<button onclick="spin()">Spin</button>
+
+	<script>
+		function makeNewDiv() {
+			/* make the div and its text */
+			let element = document.createElement("div")
+			let value = document.getElementById("inputElement").value
+	
+			element.innerHTML = value
+			element.className = "cycler"
+	
+			/* add it to the container */
+			let container = document.getElementById('target')
+			container.appendChild(element)
+		}
+	
+		function get() {
+			var cyclerItems = document.getElementsByClassName("cycler")
+			if (cyclerItems.length > 0) {
+				cyclerItems[cyclerItems.length - 1].remove()
+			}
+		}
+	
+		function spin() {
+			console.log("entered into spin")
+			var cyclerItems = document.getElementsByClassName("cycler")
+			if (cyclerItems.length > 1) {
+				console.log("working")
+				removedItem = cyclerItems[cyclerItems.length - 1]
+				cyclerItems[cyclerItems.length - 1].remove()
+				let container = document.getElementById("target")
+				container.insertBefore(removedItem, container.firstChild)
+			}
+		}
+	</script>
 </body>
-<script>
-	function makeNewDiv() {
-		/* make the div and its text */
-		let element = document.createElement("div")
-		let value = document.getElementById("inputElement").value
-
-		element.innerHTML = value
-		element.className = "cycler"
-
-		/* add it to the container */
-		let container = document.getElementById('target')
-		container.appendChild(element)
-	}
-
-	function get() {
-		var cyclerItems = document.getElementsByClassName("cycler")
-		if (cyclerItems.length > 0) {
-			cyclerItems[cyclerItems.length - 1].remove()
-		}
-	}
-
-	function spin() {
-		console.log("entered into spin")
-		var cyclerItems = document.getElementsByClassName("cycler")
-		if (cyclerItems.length > 1) {
-			console.log("working")
-			removedItem = cyclerItems[cyclerItems.length - 1]
-			cyclerItems[cyclerItems.length - 1].remove()
-			let container = document.getElementById("target")
-			container.insertBefore(removedItem, container.firstChild)
-		}
-	}
-</script>
-
 </html>
