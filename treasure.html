@@ -138,6 +138,8 @@
       </div>
     </div>
 
+    <button type="button" class="btn btn-primary" onclick="randomFindTreasure()">Random Treasure</button>
+
     <script>
       var ids = ["img0", "img1", "img2", "img3", "img4", "img5", "img6", "img7", "img8", "img9", "img10", "img11", "img12", "img13", "img14", "img15", "img16", "img17", "img18", "img19", "img20", "img21", "img22", "img23", "img24"];
       var chestCount = 0
@@ -183,6 +185,17 @@
           }
         } else {
           document.getElementById("help").innerHTML = "Sorry, no help available"
+        }
+      }
+
+      function randomFindTreasure() {
+        document.getElementById("chests").innerHTML = "Number of chests checked is " + 0
+        document.getElementById("score").innerHTML = "Score is " + 0
+        treasureLocation = Math.floor(Math.random() * 25);
+        console.log(treasureLocation)
+        if(treasureLocation == 12) {
+          console.log(treasureLocation)
+          randomFindTreasure()
         }
       }
     </script>

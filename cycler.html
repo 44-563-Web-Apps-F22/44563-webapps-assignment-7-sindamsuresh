@@ -48,28 +48,29 @@
 
 	<button onclick="get()">Get</button>
 	<button onclick="spin()">Spin</button>
+	<button onclick="swap()">Swap</button>
 
 	<script>
 		function makeNewDiv() {
 			/* make the div and its text */
 			let element = document.createElement("div")
 			let value = document.getElementById("inputElement").value
-	
+
 			element.innerHTML = value
 			element.className = "cycler"
-	
+
 			/* add it to the container */
 			let container = document.getElementById('target')
 			container.appendChild(element)
 		}
-	
+
 		function get() {
 			var cyclerItems = document.getElementsByClassName("cycler")
 			if (cyclerItems.length > 0) {
 				cyclerItems[cyclerItems.length - 1].remove()
 			}
 		}
-	
+
 		function spin() {
 			console.log("entered into spin")
 			var cyclerItems = document.getElementsByClassName("cycler")
@@ -81,6 +82,25 @@
 				container.insertBefore(removedItem, container.firstChild)
 			}
 		}
+		function swap() {
+			var cyclerItems = document.getElementsByClassName("cycler")
+			console.log(document.getElementsByClassName("cycler"))
+
+			firstIndex = Math.floor(Math.random() * cyclerItems.length)
+			secondIndex = Math.floor(Math.random() * cyclerItems.length)
+
+			firstElement = cyclerItems[firstIndex].innerHTML
+			secondElement = cyclerItems[secondIndex].innerHTML
+			console.log(firstElement)
+			console.log(secondElement)
+
+			if (cyclerItems.length > 1) {
+				let tempEle = firstElement
+				document.getElementsByClassName("cycler")[firstIndex].innerHTML = secondElement
+				document.getElementsByClassName("cycler")[secondIndex].innerHTML = tempEle
+			}
+		}
 	</script>
 </body>
+
 </html>
